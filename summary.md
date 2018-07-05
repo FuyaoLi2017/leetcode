@@ -1,2 +1,6 @@
 # the list of the problems
-## update in March 20th
+## July 2th
+leetcode 139  
+leetcode 50  
+leetcode 20  
+
