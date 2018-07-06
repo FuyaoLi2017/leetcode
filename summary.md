@@ -12,4 +12,5 @@ leetcode 198 22 347
 leetcode 73 121 8  
 
 ## July 6th
-leetcode
+leetcode 66 23 200  
+
