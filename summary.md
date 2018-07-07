@@ -14,3 +14,5 @@ leetcode 73 121 8
 ## July 6th
 leetcode 66 23 200  
 
+## July 7th
+leetcode 47 401 122 123(optional) 188(optional)
