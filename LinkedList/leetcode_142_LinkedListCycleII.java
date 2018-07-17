@@ -9,6 +9,7 @@
  *     }
  * }
  */
+ //HashSet
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         Set<ListNode> visited = new HashSet<ListNode>();
