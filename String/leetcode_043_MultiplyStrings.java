@@ -12,7 +12,7 @@ public String multiply(String num1, String num2) {
             //because we iterate the lower digits first, we should add the influence of previously
             //calculated lower digits
             int sum = mul + pos[p2];
-            ///pos[p1] is the higher digit for the calculated influence of two Integer
+            //pos[p1] is the higher digit for the calculated influence of two Integer
             //pos[p2] is the lower digit for the calculated influence of two Integer
             pos[p1] += sum / 10;
             pos[p2] = (sum) % 10;
