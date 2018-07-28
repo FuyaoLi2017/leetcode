@@ -8,7 +8,7 @@ public String reverseVowels(String s) {
     while(start<end){
         //The .contains method is checking for string within a string. By adding the double quotes to the char,
         //it is making that char into a string.
-        //(start<end && !vowels.contains(chars[start]+""))
+        //(start<end && !vowels.contains(chars[start]+""))  is also acceptable
         while(start<end && !vowels.contains(String.valueOf(chars[start]))){
             start++;
         }
