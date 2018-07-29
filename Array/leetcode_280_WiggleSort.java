@@ -43,3 +43,13 @@ public void wiggleSort(int[] nums) {
         }
     }
 }
+// a little trick by @StefanPochmann
+// taking advantage of the boolean value operations
+
+public void wiggleSort(int[] nums) {
+    for (int i = 0; i < nums.length - 1; i++) {
+        if ((i % 2 == 0) == (nums[i] > nums[i + 1])) {
+            swap(nums, i, i + 1);
+        }
+    }
+}
