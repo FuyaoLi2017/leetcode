@@ -1,3 +1,4 @@
+// mark appear numbers to their indexs as negative
 public List<Integer> findDisappearedNumbers(int[] nums) {
     List<Integer> ret = new ArrayList<Integer>();
 
@@ -14,4 +15,15 @@ public List<Integer> findDisappearedNumbers(int[] nums) {
         }
     }
     return ret;
+}
+
+// change the values of the array,set the appearred value to be larger than n
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        int n = nums.length;
+        for (int i = 0; i < nums.length; i ++) nums[(nums[i]-1) % n] += n;
+        for (int i = 0; i < nums.length; i ++) if (nums[i] <= n) res.add(i+1);
+        return res;
+    }
 }
