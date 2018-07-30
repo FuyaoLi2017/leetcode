@@ -35,9 +35,9 @@ class Solution{
 	}
 }
 
-//revised version
+//revised version， also wrong
 /*
-*这样还是不行，因为equals是不能比较null的。所以还是会报错。
+*其实这样还是不行，因为equals是不能比较null的。所以还是会报错。
 *https://blog.csdn.net/dafeige8/article/details/76719340
 */
 class Solution{
@@ -52,3 +52,5 @@ class Solution{
         return false;
 	}
 }
+
+// 或者就是把null拿出来用"=="比较，其他的用equals
