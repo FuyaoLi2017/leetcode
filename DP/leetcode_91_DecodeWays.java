@@ -22,7 +22,7 @@ public class Solution {
     }
 }
 
-// a clever short solution
+// a cleverer short solution
 public class Solution {
     public int numDecodings(String s) {
         int n = s.length();
