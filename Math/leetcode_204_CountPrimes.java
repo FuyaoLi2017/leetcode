@@ -1,3 +1,7 @@
+/**
+* use the character of boolean value to use 2 loops to figure out all notPrime numbers
+* and the rest of the numbers are prime and they can be added to the list
+*/
 public class Solution {
     public int countPrimes(int n) {
         boolean[] notPrime = new boolean[n];
