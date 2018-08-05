@@ -1,4 +1,4 @@
-// correct answer, use carry digits
+// correct answer, use carry digits StringBuilder
 public class Solution {
     public String addBinary(String a, String b) {
         StringBuilder sb = new StringBuilder();
