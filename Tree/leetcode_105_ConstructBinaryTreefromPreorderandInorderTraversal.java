@@ -31,7 +31,7 @@ public TreeNode helper(int preStart, int inStart, int inEnd, int[] preorder, int
             inIndex = i;
         }
     }
-    // figure out the recursive method
+    // figure out the recursive method, the most important one is the preStart value
     root.left = helper(preStart + 1, inStart, inIndex - 1, preorder, inorder);
     root.right = helper(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);
     return root;
