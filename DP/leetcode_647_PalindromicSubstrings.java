@@ -1,3 +1,4 @@
+// no DP solution
 public class Solution {
     int count = 0;
 
@@ -16,5 +17,63 @@ public class Solution {
         while (left >=0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
             count++; left--; right++;
         }
+    }
+}
+
+// DP
+public int countSubstrings(String s) {
+    int n = s.length();
+    int res = 0;
+    boolean[][] dp = new boolean[n][n];
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = i; j < n; j++) {
+            dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
+            if(dp[i][j]) ++res;
+        }
+    }
+    return res;
+}
+
+// the same method like the above solution, more clear but more redundant
+public class Solution {
+    public int countSubstrings(String s) {
+
+        int sLen = s.length();
+        char[] cArr = s.toCharArray();
+
+        int totalPallindromes = 0;
+
+        boolean[][] dp = new boolean[sLen][sLen];
+
+        // Single length pallindroms
+        for (int i = 0; i < sLen; i++) {
+            dp[i][i] = true;
+            totalPallindromes++;
+        }
+
+        // 2 length pallindromes
+        for (int i = 0; i < sLen - 1; i++) {
+            if (cArr[i] == cArr[i + 1]) {
+                dp[i][i + 1] = true;
+                totalPallindromes++;
+            }
+        }
+
+        // Lengths > 3
+
+        for (int subLen = 2; subLen < sLen; subLen++) {
+
+            for (int i = 0; i < sLen - subLen; i++) {
+
+                int j = i + subLen;
+
+                if (dp[i + 1][j - 1] && cArr[i] == cArr[j]) {
+                    dp[i][j] = true;
+                    totalPallindromes++;
+                }
+            }
+        }
+        return totalPallindromes;
+
     }
 }
