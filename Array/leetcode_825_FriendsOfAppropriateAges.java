@@ -1,3 +1,4 @@
+// summarize the conditions
 class Solution {
     public int numFriendRequests(int[] ages) {
         int res = 0;
