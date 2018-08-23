@@ -35,3 +35,6 @@ class Solution {
         return ans;
     }
 }
+
+// https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/discuss/108230/Clean-Java-DP-O(n)-Solution.-Easy-extend-to-Sum-of-K-Non-Overlapping-SubArrays.
+// check this more general solution
