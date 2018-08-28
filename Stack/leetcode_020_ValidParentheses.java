@@ -16,3 +16,12 @@ public boolean isValid(String s) {
 	return stack.isEmpty();
 }
 }
+
+/*
+review in Aug 28th
+check the first half of the parentheses, push the second half of the parentheses into the stack
+pop the element out if the element is not the first half of the parentheses.
+If the popped out element in the stack doesn't
+match the scanned element in the s. return false
+if all the elements passed the loop, return true
+*/
