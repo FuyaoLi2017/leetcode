@@ -17,3 +17,8 @@ class Solution {
             backtrack(ans, cur+")", open, close+1, max);
     }
 }
+
+/**
+* not return type, use DFS in the backtracking manner
+*
+*/
