@@ -20,5 +20,7 @@ class Solution {
 
 /**
 * not return type, use DFS in the backtracking manner
-*
+* https://blog.csdn.net/wonner_/article/details/80373871
+* DFS的思想，先加上左边的括号，然后再加上右边的括号
+* 因此先（opne < max）， 然后（close < open）
 */

@@ -10,3 +10,6 @@ class Solution {
         return s.stream().mapToInt(i->i).toArray();
     }
 }
+
+// 关于设置循环标签，从JDK1.5
+// http://lihengzkj.iteye.com/blog/1090034
