@@ -54,7 +54,7 @@ public int kEmptySlots(int[] flowers, int k) {
         // 初始化left, right
         int left = 0, right = k + 1, res = Integer.MAX_VALUE;
         for(int i = 0; right < days.length; i++){   //注意这个地方的跳出条件是right < days.length,跟i无关
-            if(days[i] < days[left] || days[i] <= days[right]){
+            if(days[i] < days[left] || days[i] <= days[right]){  //如果改slot夹在中间开
                 if(i == right)res = Math.min(res, Math.max(days[left], days[right]));   //we get a valid subarray
                 left = i;
                 right = k + 1 + i;
