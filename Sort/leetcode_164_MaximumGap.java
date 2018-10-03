@@ -87,6 +87,7 @@ public int maximumGap(int[] num) {
 }
 
 // Radix Sort
+// https://baike.baidu.com/item/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/7875498?fr=aladdin
 /*
 The first step is to find the maximum value in nums array, it will
 be the threshold to end while loop.
@@ -117,17 +118,20 @@ public int maximumGap(int[] nums) {
 
     int[] aux = new int[nums.length];
 
-    while (m / exp > 0) { // Go through all digits from LSB to MSB
+    while (m / exp > 0) { // Go through all digits from LSB(least Significant digit) to MSB(most Significant digit)
         int[] count = new int[R];
 
+// store the total number of a specific digit number
         for (int i = 0; i < nums.length; i++) {
             count[(nums[i] / exp) % 10]++;
         }
 
+// add the previous count[] to make the insertion to the aux[] array easier
         for (int i = 1; i < count.length; i++) {
             count[i] += count[i - 1];
         }
 
+// put the nums[i] in the consponding intervals
         for (int i = nums.length - 1; i >= 0; i--) {
             aux[--count[(nums[i] / exp) % 10]] = nums[i];
         }
@@ -138,6 +142,7 @@ public int maximumGap(int[] nums) {
         exp *= 10;
     }
 
+// after making the radix sort of all the digits, the array is sorted, we can look through to find the max gap
     int max = 0;
     for (int i = 1; i < aux.length; i++) {
         max = Math.max(max, aux[i] - aux[i - 1]);
