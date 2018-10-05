@@ -1,4 +1,4 @@
-Java 中int、String的类型转换
+- Java 中int、String的类型转换
 int -> String
 
 int i=12345;
@@ -44,3 +44,6 @@ A. 有叁种方法:
 3.) String s = "" + i;
 
 注: Double, Float, Long 转成字串的方法大同小异.
+
+- String比较
+用equals()方法！
