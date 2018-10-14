@@ -75,3 +75,28 @@ a{3}	Exactly 3 of a
 a{3,}	3 or more of a
 a{3,6}	Between 3 and 6 of a
 options: i case insensitive m make dot match newlines x ignore whitespace in regex o perform #{...} substitutions only once
+
+### String初始化问题
+String s;和String s=null;和String s="a";有什么区别？
+
+
+第一个只是定义了一个String类型变量s，并没有给它赋初值，在Java中，默认在使用一个变量的时候必须赋予它初值（降低风险）。 
+第二个和第三个都定义了String类型变量s，并赋予它初值，只不过第二个赋予的值为null（空）罢了
+
+主要要理解的是
+String s; s为一个引用～～它不是对象   
+
+第一个是没有初始化的引用；   
+第二个为空引用；
+第三个是在字符串池里写入一个字符'a',然后用s指向它。
+
+
+String s;只是给s分配一个内存空间   
+String s=null;是分配的空间中存储的值为空值   
+String s="a";这句就不用我多说了分配的空间的值为字符a
+
+
+特别关注：String s="a"和String s=new String("a");是有本质上的区别的 
+  
+前者是在字符串池里写入一个字符'a',然后用s指向它；
+后者是在堆上创建一个内容为"a"的字符串对象。
