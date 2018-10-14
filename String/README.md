@@ -1,4 +1,4 @@
-- Java 中int、String的类型转换
+### Java 中int、String的类型转换
 int -> String
 
 int i=12345;
@@ -24,7 +24,7 @@ int i;
 第二种方法：i=Integer.valueOf(s).intValue();//Integer.valueOf(s) 相当于 new Integer(Integer.parseInt(s))，也会抛异常，但会多产生一个对象
 
 --------------------------------------------------------------------
-1如何将字串 String 转换成整数 int?
+### 如何将字串 String 转换成整数 int?
 
 A. 有两个方法:
 
@@ -100,3 +100,15 @@ String s="a";这句就不用我多说了分配的空间的值为字符a
   
 前者是在字符串池里写入一个字符'a',然后用s指向它；
 后者是在堆上创建一个内容为"a"的字符串对象。
+
+### char to Int
+（1）把char转成字符串， Integer.parseInt(""+'1')
+或
+String a = "12345";
+int d = Integer.parseInt(String.valueOf(a.charAt(2)));
+int c = Integer.parseInt(String.valueOf(a.charAt(3)));
+
+Character.digit(char ch, int radix);
+
+### Check if it is a characters
+Character.isDigit(c)
