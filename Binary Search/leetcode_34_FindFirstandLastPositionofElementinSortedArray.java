@@ -17,7 +17,7 @@ Output: [-1,-1]
 
 // I implement the binary search three times and it got TLE, first confirm the existance and then calculate the right and left boundary
 // using binary search respectively
-// a triky solution
+// a triky solution, 实现C++里面的lower_bound, 先跑一次找到left, 然后跑一次（target + 1）,找到right bound
 public class Solution {
 	public int[] searchRange(int[] A, int target) {
 		int start = Solution.firstGreaterEqual(A, target);

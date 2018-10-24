@@ -1,3 +1,4 @@
+### Traverse HashMap
 ```java
 // ways to traverse Hashmap
 //sort the list according to the frenquency of the words
@@ -25,3 +26,5 @@ List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>
             else break;  
         }
 ```
+### Use / && % to make calculation easier
+> 036 ValidSudoku
