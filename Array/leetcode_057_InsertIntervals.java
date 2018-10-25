@@ -42,6 +42,7 @@ public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
     if (intervals == null || newInterval == null) return result;
     int iStart = findStartPos(intervals, newInterval.start);
     int iEnd = findEndPos(intervals, newInterval.end);
+    // corner case, in case there is overlap with the interval in front the iStart
     if (iStart > 0 && intervals.get(iStart - 1).end >= newInterval.start) iStart--;
     if (iEnd == intervals.size() || intervals.get(iEnd).start > newInterval.end) iEnd--;
 
