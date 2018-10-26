@@ -5,7 +5,7 @@
 
 - new the backtracking structure in the main processing function, not dfs() function
 
-- when adding the result, i.e. add a list, you need to new a ArrayList<>(cur),一开始只是创建了一个ArrayList, 后面必须再加
+- when adding the result, i.e. add a list, you need to new a ArrayList<>(cur),一开始只是创建了一个ArrayList, 后面必须再加,否则backtracking回最开始，什么都没有加入
 
 - 逻辑上，各个backtracking的路都是走一遍，所以内部都是if else去backtrack, 不要写错为while
 

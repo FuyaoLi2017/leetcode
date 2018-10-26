@@ -29,7 +29,7 @@ A solution set is:
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
-        Arrays.sort(candidates);
+        // Arrays.sort(candidates);
         // index: added elements must after this index; cur: the current sum of the elements
         dfs(candidates, target, res, 0, new ArrayList<Integer>());
         return res;
