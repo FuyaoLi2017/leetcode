@@ -112,3 +112,13 @@ Character.digit(char ch, int radix);
 
 ### Check if it is a characters
 Character.isDigit(c)
+
+### indexOf()
+- one parameter: str.indexOf(matchString): find the index first matches the match String in the str
+- two parameter: str.indexOf(matchString, fromIndex): find the first index of matchString from the given index
+
+### StringBuilder
+- You can append something to a string consecutively. sth.append().append()...
+- setCharAt(int index, char c), can change the value at a specific position
+
+### Permutations类型的题目建议用toCharArray()，转换成char array做题
