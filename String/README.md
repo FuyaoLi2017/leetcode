@@ -122,3 +122,6 @@ Character.isDigit(c)
 - setCharAt(int index, char c), can change the value at a specific position
 
 ### Permutations类型的题目建议用toCharArray()，转换成char array做题
+
+### different between null string, empty string and "" String
+https://blog.csdn.net/o0DarkNessYY0o/article/details/52526411
