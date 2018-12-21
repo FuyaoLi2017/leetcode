@@ -125,3 +125,8 @@ Character.isDigit(c)
 
 ### different between null string, empty string and "" String
 https://blog.csdn.net/o0DarkNessYY0o/article/details/52526411
+
+### substring
+subString()
+- convert char[] to String Object
+new String​(char[] value, int offset, int count)  -> count!

@@ -17,53 +17,78 @@ root last -> Post-order
 　　2>如果树不为空：层序遍历二叉树
 　　2.1>如果一个结点左右孩子都不为空，则pop该节点，将其左右孩子入队列；
 　　2.1>如果遇到一个结点，左孩子为空，右孩子不为空，则该树一定不是完全二叉树；
-　　2.2>如果遇到一个结点，左孩子不为空，右孩子为空；或者左右孩子都为空；则该节点之后的队列中的结点都为叶子节点；该树才是完全二叉树，否则就不是完全二叉树
+　　2.2>如果遇到一个结点，左孩子不为空，右孩子为空；或者左右孩子都为空；加入该节点，则该节点之后的队列中的结点都为叶子节点；该树才是完全二叉树，否则就不是完全二叉树
 ```java
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-
-class Solution {
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
+/**
+ * public class TreeNode {
+ *   public int key;
+ *   public TreeNode left;
+ *   public TreeNode right;
+ *   public TreeNode(int key) {
+ *     this.key = key;
+ *   }
+ * }
+ */
+public class Solution {
+  public boolean isCompleted(TreeNode root) {
+    if (root == null) return true;
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+    while (!q.isEmpty()) {
+      TreeNode cur = q.poll();
+      if (cur.left != null && cur.right != null) {
+        q.offer(cur.left);
+        q.offer(cur.right);
+      } else if (cur.left == null && cur.right != null) {
+        return false;
+      } else {
+        if(cur.left != null) {
+          q.offer(cur.left);
         }
-    }
-    public boolean completeBinaryTree(TreeNode root) {
-        if (root == null) return false;
-        Deque<TreeNode> dq = new ArrayDeque<>();
-        dq.add(root);
-        while (!dq.isEmpty()) {
-            TreeNode current = dq.peekFirst();
-            TreeNode currentLeft = current.left;
-            TreeNode currentRight = current.right;
-            if (currentLeft != null && currentRight != null) {
-                dq.poll();
-                dq.add(currentLeft);
-                dq.add(currentRight);
-            } else if (currentLeft == null && currentRight != null){
-                return false;
-            } else {
-                //上述情况下（左孩子非空右孩子空，或者左右都空），之后的所有node就必须都是叶子节点才是完全二叉树
-                //遍历当前dq中所有节点的孩子是不是都是空的，如果是，就return true, 如果不是，就return false
-                dq.poll(); //poll是删掉首元素
-                while(!dq.isEmpty()) {
-                    TreeNode currentNode = dq.poll();
-                    if (currentNode.left == null && currentNode.right == null)
-                        continue;
-                    else return false;
-                }
-            }
-
+        while (!q.isEmpty()) {
+          TreeNode lastLevel = q.poll();
+          if (lastLevel.left != null || lastLevel.right != null) {
+            return false;
+          }
         }
         return true;
+      }
     }
+    return true;
+  }
 }
+
 ```
+```Java
+// a  concise way to implement it
+public class Solution {
+  public boolean isCompleted(TreeNode root) {
+    if (root == null) return true;
+    Queue<TreeNode> queue = new LinkedList<>();
+    boolean flag = false;
+    queue.offer(root);
+    while (!queue.isEmpty()) {
+    TreeNode cur = queue.poll();
+    if (cur.left == null) {
+      flag = true;
+    } else if (flag) {
+      return false;
+    } else {
+      queue.offer(cur.left);
+    }
+    if (cur.right == null) {
+      flag = true;
+    } else if (flag) {
+      return false;
+    } else {
+      queue.offer(cur.right);
+    }
+  }
+  return true;
+  }
+}
+
+```
+
 ### Iterative way for BST
 >https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
