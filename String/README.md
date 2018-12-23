@@ -130,3 +130,6 @@ https://blog.csdn.net/o0DarkNessYY0o/article/details/52526411
 subString()
 - convert char[] to String Object
 new String​(char[] value, int offset, int count)  -> count!
+
+### Sliding window template
+https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
