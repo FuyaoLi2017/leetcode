@@ -27,3 +27,20 @@
         }
         return left == right;
     }
+### 9. DFS-1 vs DFS 2
+> LAICODE 063
+
+- dfs - 1: 每层只做一件事，给一个情况分出一支
+- dfs - 2: 开头unique的元素遍历一遍，never look back
+
+### 10. "" 如果toCharArray() 结果是是什么？
+是空的，长度为0的charArray
+
+### 11. StringBuilder() toString()
+直接new的StringBuilder, toString()之后返回的是长度为0 string -> ""
+## backtracking
+- 对于回溯问题，总结出一个递归函数模板，包括以下三点  
+- 递归函数的开头写好跳出条件，满足条件才将当前结果加入总结果中  
+- 已经拿过的数不再拿 if(s.contains(num)){continue;}  
+- 遍历过当前节点后，为了回溯到上一步，要去掉已经加入到结果list中的当前节点。  
+- **务必记得每一个添加新步骤都要进行backtrack, 包括下标，改变的String以及stack中的东西等等**
