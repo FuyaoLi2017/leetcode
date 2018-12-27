@@ -44,3 +44,8 @@
 - 已经拿过的数不再拿 if(s.contains(num)){continue;}  
 - 遍历过当前节点后，为了回溯到上一步，要去掉已经加入到结果list中的当前节点。  
 - **务必记得每一个添加新步骤都要进行backtrack, 包括下标，改变的String以及stack中的东西等等**
+
+### 遍历HashSet<>过程中不能进行remove操作，否则会报错
+https://lizhuang.iteye.com/blog/2356039
+https://stackoverflow.com/questions/1110404/remove-elements-from-a-hashset-while-iterating
+但是用list注意顺序！！！你取出元素的位置可能在前面，加回去元素的位置可能在后面
