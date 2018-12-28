@@ -126,3 +126,7 @@ public class Solution {
     array[j] = temp;
   }
 }
+
+
+Expected: [["dg","dh","di","eg","eh","ei","fg","fh","fi"]]
+ Your Solution: [["dg","ed","fe","dh","ed","fe","di","ed","fe"]]

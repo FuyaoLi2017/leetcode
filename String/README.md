@@ -133,3 +133,8 @@ new String​(char[] value, int offset, int count)  -> count!
 
 ### Sliding window template
 https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
+
+### 善于使用startsWith(), indexOf() API
+>LC616
+
+构造string时候一个一个char处理更高效，不一定非要是一个一个substring去处理
