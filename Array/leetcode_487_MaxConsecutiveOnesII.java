@@ -88,6 +88,8 @@ Note that setting k = 0 will give a solution to the earlier version Max Consecut
 
 For k = 1 we can apply the same idea to simplify the solution. Here q stores the index of zero within the window [l, h] so its role is similar to Queue in the above solution
 */
+
+// q相当于我的posNew, q相当于我的posNew
     public int findMaxConsecutiveOnes(int[] nums) {
         int max = 0, q = -1;
         for (int l = 0, h = 0; h < nums.length; h++) {
