@@ -38,7 +38,7 @@ public class Solution {
      */
      for (int i = 1; i < array.length; i++) {
          cur = Math.max(cur + array[i], array[i]);
-         result = Math.max(result. cur);
+         result = Math.max(result, cur);
      }
      return result;
    }
