@@ -138,3 +138,13 @@ https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Slidin
 >LC616
 
 构造string时候一个一个char处理更高效，不一定非要是一个一个substring去处理
+
+### StringBuilder insert 和 append 方法
+
+- insert: O(N^2)
+- append: O(N)
+
+shortest palindrome 最好用append这样的，感觉
+
+### 如果确定String中元素的类型，直接可以开辟一个数组做操作，不需要再开hashmap
+>LC387
