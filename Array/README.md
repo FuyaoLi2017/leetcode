@@ -9,3 +9,10 @@ https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-on
 ### 对于2D array的题
 - 注意可能利用bit操作，lc289 game of life.
 - 一般都是先取出来横向有多少点，纵向有多少点，移动指针进行操作
+
+### ArrayList array
+ArrayList<Integer>[] graph = new ArrayList[MAX_EDGE_VAL + 1]; // 注意建立ArrayList数组的方法，后面不允许加上<>
+
+### 复制数组
+public static int[] copyOf(int[] original, int newLength)
+Arrays.copyOf(array, 4);

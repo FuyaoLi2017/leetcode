@@ -50,7 +50,7 @@ Assume all four edges of the grid are all surrounded by wall.
 */
 // typical dfs backtracking 默认从（0， 0）开始，可能这就是约定吧。
 class Solution {
-
+    // 这个方向的顺序非常重要！务必是向上，顺时针一圈，这个很严格！！！！！
     int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     public void cleanRoom(Robot robot) {
         Set<String> visited = new HashSet<>();

@@ -58,3 +58,37 @@ public class Solution {
     return globalMax;
   }
 }
+
+// 返回3个数值，加上index
+public class Solution {
+  public int largestSum(int[] array) {
+     int result = array[0];
+     int cur = array[0];
+    int resLeft = 0;
+    int resRight = 0;
+     int left = 0;
+    int right = 0;
+     /*
+     dp[i] means the largest sum of subarray ending at index i
+     dp[i] = array[i]                 if dp[i - 1] <= 0
+           = dp[i - 1] + array[i]     if dp[i - 1] > 0
+     so that we can reduce the space cnsumption by recording the latest largest sum
+     */
+     for (int i = 1; i < array.length; i++) {
+       if (cur > 0) {
+         right = i;
+         cur = cur + array[i];
+       } else {
+         left = i;
+         right = i;
+         cur = array[i];
+       }
+       if (sum > max) {
+         resLeft = left;
+         resRight = right;
+       }
+       result = Math.max(result, cur);
+     }
+     return new int[]{result, resLeft, resRight};
+   }
+}

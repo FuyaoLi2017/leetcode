@@ -92,3 +92,7 @@ public class Solution {
 
 ### Iterative way for BST
 >https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
+
+
+### LCA questions
+如果确保元素存在，其实可以只看能看到的所有元素就可以，典型的就K node LCA,和classic LCA,看laioffer的答案

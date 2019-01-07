@@ -48,7 +48,7 @@ You may not alter the values in the list's nodes, only nodes itself may be chang
              // prev-->temp-->...-->tail-->...-->...
              // Keep doing until @tail is the next node of @prev
              while (prev.next != tail) {
-                 temp = prev.next; // assign a new value to temp
+                 temp = prev.next; // assign a new value to temp, not lose the reference of this temp
                  prev.next = temp.next; // delete the connection between temp and prev
                  temp.next = tail.next;
                  tail.next = temp;

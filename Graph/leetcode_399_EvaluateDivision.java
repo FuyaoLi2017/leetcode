@@ -16,6 +16,8 @@ queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ].
 The input is always valid. You may assume that evaluating the queries will result in no division by zero and there is no contradiction.
 */
 public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
+    // traverse the equations, store the available equations in pairs
+    // store the available equation answers to valuesPair
     HashMap<String, ArrayList<String>> pairs = new HashMap<String, ArrayList<String>>();
     HashMap<String, ArrayList<Double>> valuesPair = new HashMap<String, ArrayList<Double>>();
     for (int i = 0; i < equations.length; i++) {
@@ -38,13 +40,16 @@ public double[] calcEquation(String[][] equations, double[] values, String[][] q
     for (int i = 0; i < queries.length; i++) {
         String[] query = queries[i];
         result[i] = dfs(query[0], query[1], pairs, valuesPair, new HashSet<String>(), 1.0);
+        // values are positive, I should
         if (result[i] == 0.0) result[i] = -1.0;
     }
     return result;
 }
 
 private double dfs(String start, String end, HashMap<String, ArrayList<String>> pairs, HashMap<String, ArrayList<Double>> values, HashSet<String> set, double value) {
+    // DFS, we meet the previous element, avoid duplicate visit which will lead to stack overflow
     if (set.contains(start)) return 0.0;  // DFS遇到之前相同的元素
+    // totally invalid input
     if (!pairs.containsKey(start)) return 0.0;
     if (start.equals(end)) return value;
     set.add(start);
@@ -55,9 +60,11 @@ private double dfs(String start, String end, HashMap<String, ArrayList<String>> 
     for (int i = 0; i < strList.size(); i++) {
         tmp = dfs(strList.get(i), end, pairs, values, set, value*valueList.get(i));
         if (tmp != 0.0) {
+            // we have found the correct answer
             break;
         }
     }
-    set.remove(start); // DFS需要remove这个值
+    set.remove(start); // DFS backtracking
+    // we will return the correct value if we have found the right answer, or we will just return 0.0
     return tmp;
 }
