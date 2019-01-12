@@ -53,7 +53,7 @@ class Solution {
     }
 }
 
-// 答案2
+// 答案2, more neat and clear
 public class Solution {
 public String minWindow(String s, String t) {
     if(s == null || s.length() < t.length() || s.length() == 0){

@@ -12,6 +12,12 @@ https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-on
 
 ### ArrayList array
 ArrayList<Integer>[] graph = new ArrayList[MAX_EDGE_VAL + 1]; // 注意建立ArrayList数组的方法，后面不允许加上<>
+- 1 List[]
+不推荐，因为List是一个带Generics的class，不推荐跟数组一起使用。因为一起使用要像你这样擦掉泛型。你可以用List of List
+- 2, List<Integer>[]
+错的
+- 3, Integer[]
+是不带泛型的数组 可以用，不过wrapper class效率不如primitive，没有特殊原因，还是用int[]
 
 ### 复制数组
 public static int[] copyOf(int[] original, int newLength)
