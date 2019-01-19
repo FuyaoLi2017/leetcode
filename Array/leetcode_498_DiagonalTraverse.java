@@ -33,3 +33,38 @@ class Solution {
     return result;
 }
 }
+
+// my Solution
+class Solution {
+    public int[] findDiagonalOrder(int[][] matrix) {
+        // use a count to traverse from 1 to m + n - 1
+        // count is odd : start from left (where column is small)
+        // count is even: start from right (where column is large)
+        // leftBound: count <= n ? 0 : counter - n
+        // rightBound: count <= m ? counter - 1 : m - 1
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return new int[]{};
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[] res = new int[m * n];
+        int index = 0;
+        for (int count = 1; count <= m + n - 1; count++) {
+            // the sum of row and column index
+            int sumIndex = count - 1;
+            int leftBound = count <= n ? 0 : count - n;
+            int rightBound = count <= m ? count - 1 : m - 1;
+            if (count % 2 == 0) {
+                // start from left
+                for (int j = leftBound; j <= rightBound; j++) {
+                    res[index++] = matrix[j][sumIndex - j];
+                }
+            } else {
+                // start from right
+                for (int j = rightBound; j >= leftBound; j--) {
+                    res[index++] = matrix[j][sumIndex - j];
+                }
+            }
+        }
+        return res;
+    }
+}

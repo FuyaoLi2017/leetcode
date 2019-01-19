@@ -40,3 +40,17 @@ List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>
 
 JDK8 以下是ArrayList和LinkedList实现HashMap
 容量超过8就用红黑树
+
+### TreeMap
+TreeMap -> values(), 返回一个collections的view，所有的元素
+其他的map也是，
+
+### TreeSet
+- floor(E e)
+Returns the greatest element in this set less than or equal to the given element, or null if there is no such element.
+- 	ceiling(E e)
+Returns the least element in this set greater than or equal to the given element, or null if there is no such element.
+- 	higher(E e)
+Returns the least element in this set strictly greater than the given element, or null if there is no such element.
+- 	lower(E e)
+Returns the greatest element in this set strictly less than the given element, or null if there is no such element.

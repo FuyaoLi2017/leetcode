@@ -15,6 +15,38 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 
 */
 
+// my solution, TreeMap, solution because the data structure I use
+class Solution {
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for (Interval interval : intervals) {
+            map.put(interval.start, interval.end);
+        }
+        int left = newInterval.start;
+        int right = newInterval.end;
+        Integer start = map.floorKey(left);
+        Integer end = map.floorKey(right);
+
+        if (start == null && end == null) {
+            map.put(left, right);
+        } else if (start != null && map.get(start) >= left) {
+            map.put(start, Math.max(map.get(end), Math.max(map.get(start), right)));
+            map.subMap(left, false, right, true).clear();
+        } else {
+            map.put(left, Math.max(map.get(end), right));
+            map.subMap(left, false, right, true).clear();
+        }
+
+        List<Interval> res = new ArrayList<>();
+
+        for (Integer i : map.keySet()) {
+            res.add(new Interval(i, map.get(i)));
+        }
+        
+        return res;
+    }
+}
+
 // O(N) one pass method, short but a little bit slow
 class Solution {
    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {

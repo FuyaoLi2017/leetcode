@@ -40,7 +40,7 @@ class RangeModule {
         Map<Integer, Integer> subMap = map.subMap(left, false, right, true);
         Set<Integer> set = new HashSet(subMap.keySet());
         map.keySet().removeAll(set);
-        // can be replaced by: map.subMap(left, true, right, false).clear();
+        // can be replaced by: map.subMap(left, false, right, true).clear();
     }
 
     public boolean queryRange(int left, int right) {
