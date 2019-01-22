@@ -22,7 +22,7 @@ You may assume the number of calls to update and sumRegion function is distribut
 You may assume that row1 ≤ row2 and col1 ≤ col2.
 */
 // 树状数组(Binary Indexed Tree(BIT), Fenwick Tree)是一个查询和修改复杂度都为log(n)的数据结构。主要用于查询任意两位之间的所有元素之和，但是每次只能修改一个元素的值；经过简单修改可以在log(n)的复杂度下进行范围修改，但是这时只能查询其中一个元素的值。
-
+// http://www.hawstein.com/posts/binary-indexed-trees.html
 public class NumMatrix {
 
     int[][] tree;

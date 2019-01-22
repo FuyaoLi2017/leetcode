@@ -148,3 +148,12 @@ shortest palindrome 最好用append这样的，感觉
 
 ### 如果确定String中元素的类型，直接可以开辟一个数组做操作，不需要再开hashmap
 >LC387
+
+### 不同进制的数据表达
+> LC 398 UTF8 Validation
+
+System.out.println(0b101);//二进制:5  （0b开头的）
+System.out.println(0e1011);//0.0
+System.out.println(011);//八进制:9   (0开头的)
+System.out.println(11);//十进制:11
+System.out.println(0x11C);//十六进制:284   （0x开头的）

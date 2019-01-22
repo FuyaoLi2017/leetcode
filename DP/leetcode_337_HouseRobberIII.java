@@ -7,6 +7,28 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+// 最为直接的想法
+class Solution {
+    public int rob(TreeNode root) {
+        if (root == null)
+            return 0;
+        // if we don't rob the current root
+        int notRob = rob(root.left) + rob(root.right);
+        // if we rob the current node
+        int left = 0, right = 0;
+        if (root.left != null) {
+            left = rob(root.left.left) + rob(root.left.right);
+        }
+        if (root.right != null) {
+            right = rob(root.right.left) + rob(root.right.right);
+        }
+        int rob = left + right + root.val;
+        return Math.max(rob, notRob);
+    }
+}
+
+// 加上hashmap保存看过的点
 class Solution {
     public int rob(TreeNode root) {
     return robSub(root, new HashMap<>());
@@ -33,6 +55,7 @@ private int robSub(TreeNode root, Map<TreeNode, Integer> map) {
 }
 }
 
+// DP, 定义返回值的结构
 class Solution {
 public int rob(TreeNode root) {
     int[] res = robSub(root);

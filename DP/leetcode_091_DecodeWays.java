@@ -1,3 +1,55 @@
+/*
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+Given a non-empty string containing only digits, determine the total number of ways to decode it.
+
+Example 1:
+
+Input: "12"
+Output: 2
+Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+Example 2:
+
+Input: "226"
+Output: 3
+Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+*/
+// my naive Solution using recusion
+// 对corner case的处理
+class Solution {
+    public int numDecodings(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int[] count = {0};
+        char[] array = s.toCharArray();
+        helper(array, 0, count);
+        return count[0];
+    }
+
+    private void helper(char[] array, int index, int[] count) {
+        if (index >= array.length) {
+            count[0] += 1;
+            return;
+        }
+        if (array[index] == '0') {
+                return;
+        }
+        if (index < array.length) {
+            helper(array, index + 1, count);
+        }
+        if (index < array.length - 1) {
+            if ((array[index] - '0') * 10 + (array[index + 1] - '0') <= 26) {
+                helper(array, index + 2, count);
+            }
+        }
+    }
+}
+
 // a direct DP solution
 public class Solution {
     public int numDecodings(String s) {
