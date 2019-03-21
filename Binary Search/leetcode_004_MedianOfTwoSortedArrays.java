@@ -48,3 +48,40 @@ public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
      }
    }
+
+
+
+// 结合kth smallest element 比较直观的做法
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
+        int l = (m + n + 1) / 2;
+        int r = (m + n + 2) / 2;
+        return (kth(nums1, 0, nums2, 0, l) + kth(nums1, 0, nums2, 0, r)) / 2.0;
+    }
+
+    private int kth(int[] a, int aLeft, int[] b, int bLeft, int k) {
+        if (aLeft >= a.length) {
+            return b[bLeft + k - 1];
+        }
+        if (bLeft >= b.length) {
+            return a[aLeft + k - 1];
+        }
+        if (k == 1) {
+            return Math.min(a[aLeft], b[bLeft]);
+        }
+
+        int aMid = aLeft + k / 2 - 1;
+        int bMid = bLeft + k / 2 - 1;
+
+        int aval = aMid >= a.length ? Integer.MAX_VALUE : a[aMid];
+        int bval = bMid >= b.length ? Integer.MAX_VALUE : b[bMid];
+
+        if (aval > bval) {
+            return kth(a, aLeft, b, bMid + 1, k - k / 2);
+        } else {
+            return kth(a, aMid + 1, b, bLeft, k - k / 2);
+        }
+    }
+}
