@@ -30,6 +30,8 @@ class Solution {
             }
            // last pattern pointer was *, advancing string pointer
             else if (starIdx != -1){
+                // 可以不断的让p回到starIdx的后面一位的位置上
+                // 这样就实现了pointer的回退
                 p = starIdx + 1;
                 match++;
                 s = match;
@@ -49,10 +51,20 @@ class Solution {
 
 
 // dp method
+// https://www.youtube.com/watch?v=3ZDZ-N0EPV0
+// DP array的右下角代表match一个empty string
+/*
+T[i][j] = T[i-1][j-1] ? ==  (1)
+        = T[i][j-1] || T[i-1][j]   *  (2)
+        False
+
+这个解法是从右边到左边去match，也可以从左边到右边，最后做post processing
+*/
 public class Solution {
     public boolean isMatch(String s, String p) {
         boolean[][] match=new boolean[s.length()+1][p.length()+1];
         match[s.length()][p.length()]=true;
+        // process the tail
         for(int i=p.length()-1;i>=0;i--){
             if(p.charAt(i)!='*')
                 break;
