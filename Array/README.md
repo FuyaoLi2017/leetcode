@@ -22,3 +22,6 @@ ArrayList<Integer>[] graph = new ArrayList[MAX_EDGE_VAL + 1]; // 注意建立Arr
 ### 复制数组
 public static int[] copyOf(int[] original, int newLength)
 Arrays.copyOf(array, 4);
+
+### SpiralMatrix 类型的题目
+direction要不断变化，第一个数字是控制的行号，第二个是列号，横向移动需要通过第二个数字进行控制，一定要记清楚！
