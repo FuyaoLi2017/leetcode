@@ -96,3 +96,6 @@ public class Solution {
 
 ### LCA questions
 如果确保元素存在，其实可以只看能看到的所有元素就可以，典型的就K node LCA,和classic LCA,看laioffer的答案
+
+## PRUNE TREE
+1. 可以通过corner case, 尽可能缩小查询的范围，LC87
