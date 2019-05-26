@@ -49,3 +49,6 @@
 https://lizhuang.iteye.com/blog/2356039
 https://stackoverflow.com/questions/1110404/remove-elements-from-a-hashset-while-iterating
 但是用list注意顺序！！！你取出元素的位置可能在前面，加回去元素的位置可能在后面
+
+### arraylist 加元素到特定位置
+add(index, element)
