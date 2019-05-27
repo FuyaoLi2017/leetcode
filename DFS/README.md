@@ -23,3 +23,7 @@ https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-t
 - 逻辑上，各个backtracking的路都是走一遍，所以内部都是if else去backtrack, 不要写错为while
 
 -https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
+
+### How to keep a pointer before the slow pointer
+use a prev pointer and assign it to slow pointer before advancing slow pointer.
+- see leetcode 109 first solution
