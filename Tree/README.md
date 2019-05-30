@@ -99,3 +99,6 @@ public class Solution {
 
 ## PRUNE TREE
 1. 可以通过corner case, 尽可能缩小查询的范围，LC87
+
+## concat the string
+lc 572, 可以通过拼接字符串解决问题
