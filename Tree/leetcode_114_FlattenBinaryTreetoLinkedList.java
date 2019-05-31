@@ -52,7 +52,6 @@ public void flatten(TreeNode root) {
 	}
 }
 
-
 // my solution
 /**
  * Definition for a binary tree node.
