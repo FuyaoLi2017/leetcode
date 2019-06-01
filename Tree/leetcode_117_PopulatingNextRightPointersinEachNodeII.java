@@ -11,35 +11,10 @@ Populate each next pointer to point to its next right node. If there is no next 
 
 Initially, all next pointers are set to NULL.
 */
-// iterative
-public class Solution {
-    public void connect(TreeLinkNode root) {
-        if (root == null) return;
-        TreeLinkNode curP = root;
-        TreeLinkNode nextDummyHead = new TreeLinkNode(0);
-        TreeLinkNode p = nextDummyHead;
-        while (curP != null) {
-            if (curP.left != null) {
-                p.next = curP.left;
-                p = p.next;
-            }
-            if (curP.right != null) {
-                p.next = curP.right;
-                p = p.next;
-            }
-            if (curP.next != null) {
-                curP = curP.next;
-            }
-            else {
-                curP = nextDummyHead.next;
-                nextDummyHead.next = null;
-                p = nextDummyHead;
-            }
-        }
-    }
-}
 
-//Another version with two while loops, but with same performance, and the meaning is clearer...
+// A version with two while loops, but with same performance, and the meaning is clearer...
+// this one runs faster!
+// this one should be the stanard solution
 public class Solution {
     public void connect(TreeLinkNode root) {
         if (root == null) return;
@@ -60,10 +35,42 @@ public class Solution {
                 node = node.next;
             }
             //after traversed to the end of current layer, move to the next layer
+            // move along the left side, there is chain of nodes starting from dummy node
             head = dummy.next;
+            // set dummy.next to null for p's use, if not, p will carry a long list
+            // before it enters the next loop
             dummy.next = null;
             p = dummy;
         }
+    }
+}
+
+// iterative, HARD TO READ!
+class Solution {
+    public Node connect(Node root) {
+        if (root == null) return root;
+        Node curP = root;
+        Node nextDummyHead = new Node(0);
+        Node p = nextDummyHead;
+        while (curP != null) {
+            if (curP.left != null) {
+                p.next = curP.left;
+                p = p.next;
+            }
+            if (curP.right != null) {
+                p.next = curP.right;
+                p = p.next;
+            }
+            if (curP.next != null) {
+                curP = curP.next;
+            }
+            else {
+                curP = nextDummyHead.next;
+                nextDummyHead.next = null;
+                p = nextDummyHead;
+            }
+        }
+        return root;
     }
 }
 
