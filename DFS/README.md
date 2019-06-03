@@ -27,3 +27,7 @@ https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-t
 ### How to keep a pointer before the slow pointer
 use a prev pointer and assign it to slow pointer before advancing slow pointer.
 - see leetcode 109 first solution
+
+### backtracking when using dfs(Tree)
+- leetcode 129, remember to backtrack when you want to return it.
+- generally, you need to judge 4 cases for two child of a root node. Then, you can solve it!
