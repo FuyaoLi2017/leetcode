@@ -52,3 +52,6 @@ public class Solution {
 
 ### 关于变量创建
 如果要是可以用一个node 和它的next node来表示，那就其实不需要重新声明一个ListNode
+
+### 328
+这个题目如果用dummy head反而会很麻烦,不是每个题目都适合用dummy head
