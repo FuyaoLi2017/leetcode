@@ -42,3 +42,22 @@ public ListNode deleteDuplicates(ListNode head) {
         head.next = deleteDuplicates(head.next);
         return head.val == head.next.val ? head.next : head;
 }
+
+// my solution, iterative, June 24, 2019
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode prev = head;
+        ListNode cursor = head.next;
+        while (cursor != null) {
+            if (cursor.val == prev.val) {
+                prev.next = cursor.next;
+                cursor = cursor.next;
+            } else {
+                prev = prev.next;
+                cursor = cursor.next;
+            }
+        }
+        return head;
+    }
+}
