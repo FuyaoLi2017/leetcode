@@ -36,6 +36,14 @@ public void reorderList(ListNode head) {
 
 
 // using functions to encapsulate
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
 public class Solution {
 
   public void reorderList(ListNode head) {
@@ -63,14 +71,14 @@ public class Solution {
   }
 
   ListNode reverse(ListNode head) {
-    ListNode prev = null, curr = head, next = null;
+    ListNode prev = null;
 
-    while (curr != null) {
-      next = curr.next;
-      curr.next = prev;
-      prev = curr;
-      curr = next;
-    }
+    while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
 
     return prev;
   }
