@@ -33,6 +33,11 @@ public class Solution {
 }
 
 //Floyd's Tortoise and Hare
+// L+D+KC = 2L+2D，L = C-D +(K-1)C，K是圈数，C是圆长
+
+// https://leetcode.com/problems/linked-list-cycle-ii/solution/
+// 这道题目画图才清晰，solution给的有点问题，看第一个comment
+
 public class Solution {
     private ListNode getIntersect(ListNode head){
         ListNode tortoise = head;
