@@ -55,3 +55,6 @@ public class Solution {
 
 ### 328
 这个题目如果用dummy head反而会很麻烦,不是每个题目都适合用dummy head
+
+### 倒序使用linked list
+使用stack实现倒序
