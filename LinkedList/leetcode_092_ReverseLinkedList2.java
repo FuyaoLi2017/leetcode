@@ -1,7 +1,19 @@
+/*
+Reverse a linked list from position m to n. Do it in one-pass.
+
+Note: 1 ≤ m ≤ n ≤ length of list.
+
+Example:
+
+Input: 1->2->3->4->5->NULL, m = 2, n = 4
+Output: 1->4->3->2->5->NULL
+*/
+
 public ListNode reverseBetween(ListNode head, int m, int n) {
     if(head == null) return null;
     ListNode dummy = new ListNode(0); // create a dummy node to mark the head of this list
     dummy.next = head;
+    // keep this pointer to keep control of the list front
     ListNode pre = dummy; // make a pointer pre as a marker for the node before reversing
     for(int i = 0; i<m-1; i++) pre = pre.next;
 
@@ -13,10 +25,14 @@ public ListNode reverseBetween(ListNode head, int m, int n) {
 
     for(int i=0; i<n-m; i++)
     {
+        // 1. find start.next
         start.next = then.next;
         //the sequence of the following two lines cannot be exchanged, cause it will lead to a cycle(pre and then)
+        // 2. find then.next
         then.next = pre.next;
+        // 3. find prev.next;
         pre.next = then;
+        // 4. adjust then position, start position is correct
         then = start.next;
     }
 
