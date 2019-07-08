@@ -37,3 +37,5 @@ public TreeNode helper(int preStart, int inStart, int inEnd, int[] preorder, int
     return root;
 }
 }
+
+// my solution in July 8th, 2019
