@@ -16,7 +16,6 @@ The click position will only be an unrevealed square ('M' or 'E'), which also me
 The input board won't be a stage when game is over (some mines have been revealed).
 For simplicity, not mentioned rules should be ignored in this problem. For example, you don't need to reveal all the unrevealed mines when the game is over, consider any cases that you will win the game or flag any squares.
 */
-
 class Solution {
     public char[][] updateBoard(char[][] board, int[] click) {
         // classic dfs
@@ -32,7 +31,7 @@ class Solution {
                     if (i == 0 && j == 0) continue;
                     int r = row + i, c = col + j;
                     if (r < 0 || r >= m || c < 0 || c >= n) continue;
-                    if (board[r][c] == 'M' || board[r][c] == 'X') count++;
+                    if (board[r][c] == 'M') count++;
                 }
             }
 
