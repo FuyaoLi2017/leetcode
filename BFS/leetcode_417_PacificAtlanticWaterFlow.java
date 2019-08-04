@@ -78,7 +78,7 @@ public class Solution {
 }
 
 
-// DFS
+// DFS，用2个boolean map，如果2个都为true，那就认为是true
 public class Solution {
     public List<int[]> pacificAtlantic(int[][] matrix) {
         List<int[]> res = new LinkedList<>();
@@ -112,6 +112,66 @@ public class Solution {
         visited[x][y] = true;
         for(int[]d:dir){
             dfs(matrix, visited, matrix[x][y], x+d[0], y+d[1]);
+        }
+    }
+}
+
+// use BFS to rewrite the new return type
+class Solution {
+    int[][] dir = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    public List<List<Integer>> pacificAtlantic(int[][] matrix) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return res;
+        }
+        int n = matrix.length, m = matrix[0].length;
+        // one visited map for each ocean
+        boolean[][] pacific = new boolean[n][m];
+        boolean[][] atlantic = new boolean[n][m];
+        Queue<List<Integer>> pQueue = new LinkedList<>();
+        Queue<List<Integer>> aQueue = new LinkedList<>();
+
+        for (int i = 0; i < n; i++) {
+            pQueue.offer(Arrays.asList(i, 0));
+            aQueue.offer(Arrays.asList(i, m-1));
+            pacific[i][0] = true;
+            atlantic[i][m-1] = true;
+        }
+
+        for (int i = 0; i < m; i++) {
+            pQueue.offer(Arrays.asList(0, i));
+            aQueue.offer(Arrays.asList(n-1, i));
+            pacific[0][i] = true;
+            atlantic[n-1][i] = true;
+        }
+
+        bfs(matrix, pQueue, pacific);
+        bfs(matrix, aQueue, atlantic);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (pacific[i][j] && atlantic[i][j]) {
+                    res.add(Arrays.asList(i, j));
+                }
+            }
+        }
+        return res;
+    }
+
+    private void bfs(int[][] matrix, Queue<List<Integer>> queue, boolean[][] visited) {
+        int n = matrix.length, m = matrix[0].length;
+        while (!queue.isEmpty()) {
+            List<Integer> cur = queue.poll();
+            for (int[] d : dir) {
+                int x = cur.get(0) + d[0];
+                int y = cur.get(1) + d[1];
+                // flow to higher places
+                if (x < 0 || x >= n || y < 0 || y >= m || visited[x][y] || matrix[x][y] < matrix[cur.get(0)][cur.get(1)]) {
+                    continue;
+                }
+                visited[x][y] = true;
+                queue.offer(Arrays.asList(x, y));
+            }
         }
     }
 }
