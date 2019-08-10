@@ -12,3 +12,6 @@ DP，则需计算size=1到size=n-1的“解”，但这个“解”的物理意�
 为什么不像recursion直接求解小一号的问题呢？因为有些时候，将问题转化成求局部“解”，能够建立size=i问题和size=i+1问题直接的联系，从而极大地简化计算！比如我们可以很快由the largest sum of the subarray ​including the i-th element计算出the largest sum of the subarray ​including the i+1 element，但若由the largest sum of the subarray before i计算出the largest sum of the subarray ​before i+1就麻烦得多，还需要兼顾之前所有size问题的解转化计算。
 
 DP的思想即是将size=1到size=n-1的“解”全部求出来，在这些小问题“解”的基础上构建size=n大问题的解，换句话说，扫一遍所有的“解”就知道题目的解了。
+
+### DP trick
+像是lc 583,很多时候可以用多的一行或者一列

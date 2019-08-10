@@ -46,3 +46,32 @@ class Solution {
         return count;
     }
 }
+
+// my new solution
+class Solution {
+    public int minMeetingRooms(int[][] intervals) {
+        if (intervals == null || intervals.length == 0) return 0;
+        List<int[]> meetings = new ArrayList<>();
+        for(int[] interval : intervals) {
+            meetings.add(new int[]{interval[0], 0});
+            meetings.add(new int[]{interval[1], 1});
+        }
+        Collections.sort(meetings, (a, b) -> {
+            if(a[0] < b[0]) return -1;
+            else if (a[0] > b[0]) return 1;
+            else return b[1] - a[1];
+        });
+        int res = 0;
+        int cur = 0;
+        for (int i = 0; i < meetings.size(); i++) {
+            int[] meeting = meetings.get(i);
+            if(meeting[1] == 0) {
+                cur++;
+                res = Math.max(res, cur);
+            } else {
+                cur--;
+            }
+        }
+        return res;
+    }
+}
