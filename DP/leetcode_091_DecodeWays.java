@@ -50,6 +50,26 @@ class Solution {
     }
 }
 
+/*USE char to access the dfs*/
+class Solution {
+    public int numDecodings(String s) {
+        if (s == null || s.length() == 0) return 0;
+        return decoding(0, s);
+    }
+
+    private int decoding(int index, String s) {
+        int n = s.length();
+        // base case: this marks the ending
+        if (index == n) return 1;
+        if (s.charAt(index) == '0') return 0;
+        int res = decoding(index+1, s);
+        if (index < n-1 && (s.charAt(index) == '1' || s.charAt(index) == '2' && s.charAt(index+1) <= '6')) {
+            res += decoding(index+2, s);
+        }
+        return res;
+    }
+}
+
 // a direct DP solution
 public class Solution {
     public int numDecodings(String s) {

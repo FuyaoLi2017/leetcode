@@ -52,3 +52,6 @@ https://stackoverflow.com/questions/1110404/remove-elements-from-a-hashset-while
 
 ### arraylist 加元素到特定位置
 add(index, element)
+
+### BFS 时候避免重复添加元素
+LC529: BFS可以通过字母之类的标记元素，防止重复添加元素，起到类似于visited array的效果。
