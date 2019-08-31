@@ -37,3 +37,6 @@ Consider using heap. First add k(k + 1) elements to the heap and do the followin
 
 ### DEFAULT_INITIAL_CAPACITY 大小问题
 capacity大小问题：必须是常数，不能后来指定
+
+### The delete of the heap during a simple implementation of heap is usually not supported.
+It could be sift up OR sift down!!!
