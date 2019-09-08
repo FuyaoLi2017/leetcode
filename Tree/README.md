@@ -105,3 +105,8 @@ lc 572, 可以通过拼接字符串解决问题
 
 ##如果向上传递新生成的节点
 recursive做法，向上传递节点，先create一个new treenode, return回去，层层传递，在所有循环之前先recursive，这样的不是尾递归的题目比较有挑战，需要对recursive理解的比较好。
+
+### how to do bottom up recusion in tree
+LC366,
+
+recusion 放前面，通过特定的计算得到结果，用于返回值
