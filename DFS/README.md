@@ -33,3 +33,5 @@ use a prev pointer and assign it to slow pointer before advancing slow pointer.
 - generally, you need to judge 4 cases for two child of a root node. Then, you can solve it!
 
 ### StringBuilder的delete method，可以输入 （start, end）inclusive, exclusive, 实现对一个区间的字符的删除
+
+### TreeSet can sort a collection of set. Remember!

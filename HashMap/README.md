@@ -65,4 +65,6 @@ Sample use: this override will allow the map to grow up to 100 entries and then 
      protected boolean removeEldestEntry(Map.Entry eldest) {
         return size() > MAX_ENTRIES;
      }
- 
+
+### use a array table to store values
+inverse table
