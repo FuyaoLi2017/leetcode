@@ -18,3 +18,6 @@ DP的思想即是将size=1到size=n-1的“解”全部求出来，在这些小�
 
 ### 2 DP array
 有时候需要2个dp array，从2个方向看问题，非常方便了
+
+### Key tips
+We need to know what substructure or what relationship we want to store in the memo. This memo will help us to reduce duplicate calculation afterwards.
