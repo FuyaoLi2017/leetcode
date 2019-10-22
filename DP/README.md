@@ -21,3 +21,6 @@ DP的思想即是将size=1到size=n-1的“解”全部求出来，在这些小�
 
 ### Key tips
 We need to know what substructure or what relationship we want to store in the memo. This memo will help us to reduce duplicate calculation afterwards.
+
+### 分析状态机转移找到dp induction rule
+leetcode 309: buy and sell stock with cooldown
