@@ -24,3 +24,5 @@ We need to know what substructure or what relationship we want to store in the m
 
 ### 分析状态机转移找到dp induction rule
 leetcode 309: buy and sell stock with cooldown
+
+### dp and recusion(divide and conquer 结合)
