@@ -37,3 +37,6 @@ direction要不断变化，第一个数字是控制的行号，第二个是列�
 
 ### 转换0，1 bit
 不要用conditional sentence,直接位运算
+
+## toArray用法
+不能直接在return对primitive type用toArray()
