@@ -157,3 +157,7 @@ System.out.println(0e1011);//0.0
 System.out.println(011);//八进制:9   (0开头的)
 System.out.println(11);//十进制:11
 System.out.println(0x11C);//十六进制:284   （0x开头的）
+
+
+### KMP
+lc 036

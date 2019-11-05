@@ -48,6 +48,28 @@ rotate the input matrix in-place such that it becomes:
  * 4 5 6  => 4 5 6  => 8 5 2
  * 7 8 9     1 2 3     9 6 3
 */
+
+// my new solution, beat 100% 
+class Solution {
+    public void rotate(int[][] matrix) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return;
+        // rotate the row
+        for(int i = 0; i < matrix.length/2; i++){
+            int[] temp = Arrays.copyOf(matrix[i], matrix[0].length);
+            matrix[i] = Arrays.copyOfRange(matrix[matrix.length-i-1], 0, matrix[0].length);
+            matrix[matrix.length-i-1] = Arrays.copyOfRange(temp, 0, matrix[0].length);
+        }
+        // rotate the diagonal
+        for(int i = 0;  i < matrix.length; i++){
+            for(int j = i+1; j < matrix[0].length; j++){
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+    }
+}
+
 // My solution
 // copy array is very slow, don't use this!!!
 class Solution {
