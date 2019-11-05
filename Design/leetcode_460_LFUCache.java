@@ -68,6 +68,7 @@ class LFUCache {
             return;
         if(values.containsKey(key)){
             values.put(key,value);
+            
             get(key);
             return;
         }
