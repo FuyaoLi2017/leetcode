@@ -57,3 +57,7 @@ class Solution {
         return maxSquare * maxSquare;
     }
 }
+
+
+// 如果问一共有多少个小正方形
+再把matrix所有数字加起来就可以，因为是相当于每层剥去一个1，这样正好就是dp的值，加起来就正好是对的

@@ -161,3 +161,8 @@ System.out.println(0x11C);//十六进制:284   （0x开头的）
 
 ### KMP
 lc 036
+
+### create string using char list
+public String(int[] codePoints,
+      int offset,
+      int count)
