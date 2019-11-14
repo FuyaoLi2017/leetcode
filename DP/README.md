@@ -26,3 +26,6 @@ We need to know what substructure or what relationship we want to store in the m
 leetcode 309: buy and sell stock with cooldown
 
 ### dp and recusion(divide and conquer 结合)
+
+### dp的精粹
+找到可以影响当前状态的最远的值，看看他们之间怎么能把状态转移过去
