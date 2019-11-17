@@ -60,7 +60,7 @@ class Solution {
             // 不断的往parent方向取值，找到union find的root
             if (root(parent, father) == child) {
                 if (can1[0] == -1) {
-                    // 图中没有重复的parent,返回这个造成环的边
+                    // case 1: 没有入度为2的节点，可以直接return当前造成环的边
                     return edges[i];
                 }
                 // case2.2, 删除的是造成环的重复顶点的那条边
@@ -69,8 +69,8 @@ class Solution {
             }
             parent[child] = father;
         }
-        // 第一层含义：环是由ans2构成的，之前已经删除了，在52行的位置continue了，所以应该返回ans2
-        // 第二层含义：case2.1, 没有成环，返回can2
+        // 第一层含义：环是由ans2构成的，之前已经删除了，在55行的位置continue了，所以应该返回ans2
+        // 忽略这行，第二层含义：case2.1, 没有成环，返回can2
         return can2;
     }
 
@@ -131,8 +131,9 @@ class Solution {
     }
 
     // path compression的做法，直接赋给上面的数字
-    private int find(int node, int[] roots) {
-        while (node != roots[node]) {
+    private int find(int node, int[] roots) {\
+        while (roots[node] != node) {
+            roots[node] = roots[roots[node]];
             node = roots[node];
         }
         return node;

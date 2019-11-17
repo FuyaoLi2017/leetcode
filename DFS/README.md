@@ -35,3 +35,8 @@ use a prev pointer and assign it to slow pointer before advancing slow pointer.
 ### StringBuilder的delete method，可以输入 （start, end）inclusive, exclusive, 实现对一个区间的字符的删除
 
 ### TreeSet can sort a collection of set. Remember!
+
+### DFS's information needed to pass down
+1. 总体的map信息
+2. 需要更新的变量(可以用global vaiable 形式存，dfs返回值即为void, 也可以直接用dfs返回值返回回来)
+3. 需要记录的状态量
