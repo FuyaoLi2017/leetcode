@@ -27,3 +27,43 @@ Output: 3
 Follow up:
 What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
 */
+
+// recursive
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        List<Integer> list = new ArrayList<>();
+        inorder(list, root, k);
+        return list.get(k-1);
+    }
+
+    private void inorder(List<Integer> list, TreeNode root, int k){
+        if(root == null) return;
+        inorder(list, root.left, k);
+        list.add(root.val);
+        if(list.size() >= k) return;
+        inorder(list, root.right, k);
+    }
+}
+
+// iterative
+class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        Stack<TreeNode> stack = new Stack<>();
+
+        while(true){
+            // go to left most position
+            while(root != null){
+                stack.add(root);
+                root = root.left;
+            }
+            // try to pop out an element
+            root = stack.pop();
+            if(--k == 0) return root.val;
+            root = root.right;
+        }
+    }
+}
+
+// follow up:
+// https://leetcode.com/problems/kth-smallest-element-in-a-bst/solution/
+// maintain the BST and double linked list
