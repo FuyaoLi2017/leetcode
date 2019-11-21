@@ -31,3 +31,8 @@ int rotate = low;
 
 ### 遇到一个范围找第K大的值
 binary search
+
+### 遇到区间缩小问题
+binary search
+774. Minimize Max Distance to Gas Station
+chocolate

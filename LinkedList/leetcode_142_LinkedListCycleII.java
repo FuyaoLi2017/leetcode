@@ -34,7 +34,13 @@ public class Solution {
 
 //Floyd's Tortoise and Hare
 // L+D+KC = 2L+2D，L = C-D +(K-1)C，K是圈数，C是圆长
-
+// reset L to start from the beginning, finally, it will meet at the intersection
+ L        D
+-------|-----|
+       |     |
+       |     |
+       -------
+         C-D
 // https://leetcode.com/problems/linked-list-cycle-ii/solution/
 // 这道题目画图才清晰，solution给的有点问题，看第一个comment
 
