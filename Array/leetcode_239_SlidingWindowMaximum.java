@@ -18,14 +18,14 @@ class Solution {
 		for (int i = 0; i < a.length; i++) {
 			// remove numbers out of range k
 			while (!q.isEmpty() && q.peek() < i - k + 1) {
-				q.poll();
+				q.pollFirst();
 			}
 			// remove smaller numbers in k range as they are useless
 			while (!q.isEmpty() && a[q.peekLast()] < a[i]) {
 				q.pollLast();
 			}
 			// q contains index... r contains content
-			q.offer(i);
+			q.offerLast(i);
 			if (i >= k - 1) {
 				r[ri++] = a[q.peek()];
 			}
