@@ -110,3 +110,9 @@ recursive做法，向上传递节点，先create一个new treenode, return回去
 LC366,
 
 recusion 放前面，通过特定的计算得到结果，用于返回值
+
+### BST serialization
+- Binary tree could be constructed from preorder/postorder and inorder traversal.
+- Inorder traversal of BST is an array sorted in the ascending order: inorder = sorted(preorder).
+
+- LC 449!
