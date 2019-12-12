@@ -16,6 +16,8 @@ public class Solution {
         height(root, res);
         return res;
     }
+
+    // 从底部向上更新
     private int height(TreeNode node, List<List<Integer>> res){
         if(null==node)  return -1;
         int level = 1 + Math.max(height(node.left, res), height(node.right, res));
