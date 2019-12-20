@@ -92,6 +92,7 @@ public class Solution {
 }
 
 // DP
+// map 保存K-V pair, key是index, value是可以从哪些点跳过去
 public class Solution {
     public boolean canCross(int[] stones) {
         HashMap<Integer, Set<Integer>> map = new HashMap<>();

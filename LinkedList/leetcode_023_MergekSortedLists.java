@@ -78,18 +78,18 @@ class Solution {
     }
 }
 
-// more explict merge sort
+// more concise merge sort
 class Solution {
     public static ListNode mergeKLists(ListNode[] lists){
-    return partion(lists,0,lists.length-1);
+    return partiton(lists,0,lists.length-1);
 }
 
-public static ListNode partion(ListNode[] lists,int s,int e){
+public static ListNode partiton(ListNode[] lists,int s,int e){
     if(s==e)  return lists[s];
     if(s<e){
         int q=(s+e)/2;
-        ListNode l1=partion(lists,s,q);
-        ListNode l2=partion(lists,q+1,e);
+        ListNode l1=partiton(lists,s,q);
+        ListNode l2=partiton(lists,q+1,e);
         return merge(l1,l2);
     }else
         return null;
