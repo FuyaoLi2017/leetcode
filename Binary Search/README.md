@@ -36,3 +36,5 @@ binary search
 binary search
 774. Minimize Max Distance to Gas Station
 chocolate
+
+### 744, char这类直接可以比较大小，进行二分搜索

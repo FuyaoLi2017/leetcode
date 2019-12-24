@@ -29,3 +29,6 @@ leetcode 309: buy and sell stock with cooldown
 
 ### dp的精粹
 找到可以影响当前状态的最远的值，看看他们之间怎么能把状态转移过去
+
+### top-down dp的重点
+> LC464
