@@ -116,3 +116,6 @@ recusion 放前面，通过特定的计算得到结果，用于返回值
 - Inorder traversal of BST is an array sorted in the ascending order: inorder = sorted(preorder).
 
 - LC 449!
+
+### LC701 辨析iterative和recursive写法的异同
+尾递归很好写iterative
