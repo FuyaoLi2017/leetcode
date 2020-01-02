@@ -35,22 +35,25 @@ public TreeNode upsideDownBinaryTree(TreeNode root) {
 }
 
 // iterative
-public TreeNode upsideDownBinaryTree(TreeNode root) {
-    TreeNode curr = root;
-    TreeNode next = null;
-    TreeNode temp = null;
-    TreeNode prev = null;
+class Solution {
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        TreeNode curr = root;
+        // left child
+        TreeNode next = null;
+        // parent's another child
+        TreeNode temp = null;
+        // parent
+        TreeNode prev = null;
 
-    while(curr != null) {
-        next = curr.left;
+        while (curr != null) {
+            next = curr.left;
+            curr.left = temp;
+            temp = curr.right;
+            curr.right = prev;
 
-        // swapping nodes now, need temp to keep the previous level right child
-        curr.left = temp;
-        temp = curr.right;
-        curr.right = prev;
-
-        prev = curr;
-        curr = next;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
     }
-    return prev;
 }

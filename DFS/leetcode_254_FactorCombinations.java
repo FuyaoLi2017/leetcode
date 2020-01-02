@@ -23,11 +23,17 @@ class Solution {
             if(n%i!=0){
                 continue;
             }
+
+            // 加上当前组合
             list.add(i);
             list.add(n/i);
             result.add(new ArrayList<Integer>(list));
+
+            // 在当前第一个i的基础上backtrack
             list.remove(list.size()-1);
             getResult(n/i, i, result, list);
+
+            // 把当前所有的操作都remove掉
             list.remove(list.size()-1);
         }
 
