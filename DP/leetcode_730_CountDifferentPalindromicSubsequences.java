@@ -28,6 +28,7 @@ Each character S[i] will be in the set {'a', 'b', 'c', 'd'}.
 
 
 // high vote answer
+// 如果有preprocessing的话，可以再加快一点速度，提前算出next array
 class Solution {
     public int countPalindromicSubsequences(String s) {
         int len = s.length();
@@ -41,6 +42,8 @@ class Solution {
         for(int distance = 1; distance < len; distance++){
             for(int i = 0; i < len - distance; i++){
                 int j = i + distance;
+
+                // try to find the next array
                 if(chs[i] == chs[j]){
                     int low = i + 1;
                     int high = j - 1;
@@ -134,4 +137,40 @@ class Solution {
 
     return ans;
   }
+}
+
+
+// calculate the next array to speed up, corresponds to the high vote answer
+public int countPalindromicSubsequences(String S) {
+    int len = S.length();
+    int[] rightNext = new int[len], leftNext = new int[len], rec = new int[4];
+    rec[0] = rec[1] = rec[2] = rec[3] = -1;
+    for (int i = 0; i < len; i++) {
+        leftNext[i] = rec[S.charAt(i) - 'a'];
+        rec[S.charAt(i) - 'a'] = i;
+    }
+    rec[0] = rec[1] = rec[2] = rec[3] = len;
+    for (int i = len - 1; i >=0 ; i--) {
+        rightNext[i] = rec[S.charAt(i) - 'a'];
+        rec[S.charAt(i) - 'a'] = i;
+    }
+    int[][] dp = new int[len][len];
+    for (int i = 0; i < len; i++) dp[i][i] = 1;
+    for (int k = 1; k < len; k++) {
+        for (int i = 0, j = i + k; j < len; i++, j++) {
+            if (S.charAt(i) != S.charAt(j)) {
+                dp[i][j] = dp[i][j - 1] + dp[i + 1][j] - dp[i + 1][j - 1];
+            } else {
+                int irn = rightNext[i], jln = leftNext[j];
+                if (irn < jln) {
+                    dp[i][j] = dp[i + 1][j - 1] * 2 - dp[irn + 1][jln - 1];
+                } else {
+                    dp[i][j] = dp[i + 1][j - 1] * 2 + (irn == jln ? 1 : 2);
+                }
+            }
+            dp[i][j] = dp[i][j] < 0 ? dp[i][j] + 1000000007 : dp[i][j] % 1000000007;
+        }
+    }
+    return dp[0][len - 1];
+}
 }

@@ -21,6 +21,8 @@ https://leetcode.com/problems/text-justification/discuss/24876/Simple-Java-Solut
 //如果这行不是最后一行，那么应该输出"to   a"，如果是最后一行，则应该输出 "to a  "，所以这里需要分情况讨论，最后一行的处理方法和其他行之间略有不同。
 //最后一个难点就是，如果一行有三个单词，这时候中间有两个空，如果空格数不是2的倍数，那么左边的空间里要比右边的空间里多加入一个空格，那么我们只需要用总的空格数除以空间个数
 //能除尽最好，说明能平均分配，除不尽的话就多加个空格放在左边的空间里"
+
+// 注意检查抛出的异常和边界情况
 public class Solution {
     public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> lines = new ArrayList<String>();
@@ -44,6 +46,7 @@ public class Solution {
             int diff = last - index - 1;
            // if last line or number of words in the line is 1, left-justified
             //最后一行：每个单词中间一个空格， 剩余补上空白
+            // diff == 0 也是需要进来, 这个是隐藏条件，需要问面试官
             if (last == words.length || diff == 0) {
                 for (int i = index+1; i < last; i++) {
                     builder.append(" ");

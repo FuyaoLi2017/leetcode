@@ -32,3 +32,6 @@ leetcode 309: buy and sell stock with cooldown
 
 ### top-down dp的重点
 > LC464
+
+### NP HARD problems
+698, dp can optimize, but still exponential time complexity
