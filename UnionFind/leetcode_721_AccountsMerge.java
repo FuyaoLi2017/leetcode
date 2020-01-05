@@ -92,3 +92,92 @@ class Solution {
         return ans;
     }
 }
+
+// my uf solution
+class Solution {
+    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+        Map<String, Integer> map = new HashMap<>();
+        List<List<String>> result = new ArrayList<>();
+
+        int[] roots = new int[accounts.size()];
+        for(int i = 0; i < roots.length; i++){
+            roots[i] = i;
+        }
+
+        for(int i = 0; i < accounts.size(); i++){
+            List<String> account = accounts.get(i);
+            String name = account.get(0);
+            for(int j = 1; j < account.size(); j++){
+                String email = account.get(j);
+
+                if(map.containsKey(email)){
+                    union(roots, map.get(email), i);
+                }
+                map.put(account.get(j), i);
+            }
+        }
+
+        boolean[] visited = new boolean[accounts.size()];
+        for(int i = 0; i < roots.length; i++){
+            if(roots[i] == i){
+                List<Integer> groups = new ArrayList<>();
+                dfs(roots, groups, visited, i);
+
+                Set<String> curRes = new TreeSet<>();
+                for(int group : groups){
+                    List<String> account = accounts.get(group);
+                    for(int j = 1; j < account.size(); j++){
+                        curRes.add(account.get(j));
+                    }
+                }
+
+
+                List<String> person = new ArrayList<>();
+                person.add(accounts.get(i).get(0));
+
+                Iterator iter = curRes.iterator();
+                while(iter.hasNext()){
+                    person.add((String)iter.next());
+                }
+
+                result.add(person);
+            }
+
+        }
+        return result;
+
+    }
+
+    private void dfs(int[] roots, List<Integer> groups, boolean[] visited, int index){
+
+        visited[index] = true;
+        groups.add(index);
+        for(int i = 0; i < roots.length; i++){
+            if(!visited[i] && roots[i] == index){
+                dfs(roots, groups, visited, i);
+            }
+        }
+    }
+
+    private void union(int[] roots, int i, int j){
+        int first = find(roots, i);
+        int second = find(roots, j);
+
+        if(first == second) return;
+        else if(first < second) {
+            roots[second] = first;
+        }
+        else {
+            roots[first] = second;
+        }
+    }
+
+    private int find(int[] roots, int num){
+        while(roots[num] != num){
+            roots[num] = roots[roots[num]];
+            num = roots[num];
+        }
+
+        return num;
+    }
+}
