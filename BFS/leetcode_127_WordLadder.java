@@ -82,14 +82,15 @@ class Solution {
 }
 
 // bidirectional BFS
-// TC: 26的length / 2次方
+// TC: 26的(length / 2)次方
+
 public class Solution {
 
-public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-
+public int ladderLength(String beginWord, String endWord, List<String> wordListDict) {
 	Set<String> beginSet = new HashSet<String>(), endSet = new HashSet<String>();
-    if (!wordList.contains(endWord))
-        return 0;
+
+    Set<String> wordList = new HashSet<>(wordListDict);
+    if(!wordList.contains(endWord)) return 0;
 	int len = 1;
 	int strLen = beginWord.length();
 	HashSet<String> visited = new HashSet<String>();
