@@ -44,3 +44,8 @@ direction要不断变化，第一个数字是控制的行号，第二个是列�
 ## 提及到subsequence就要想到需要使用next array
 - 792
 - 1055
+
+---
+## Most Popular Methods to solve Array issues
+- HashMap
+- Two pointers
