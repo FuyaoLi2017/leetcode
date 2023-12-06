@@ -4,6 +4,7 @@ The definition of different traversal method is determined by the position of th
 root first -> Pre-order
 root middle -> In-order
 root last -> Post-order
+https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
 
 ### 2. complete binary Tree
 >https://baike.baidu.com/item/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91
