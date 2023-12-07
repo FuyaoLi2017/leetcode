@@ -120,3 +120,10 @@ recusion 放前面，通过特定的计算得到结果，用于返回值
 
 ### LC701 辨析iterative和recursive写法的异同
 尾递归很好写iterative
+
+### ArrayDeque push/pop
+push is pushing the data to the front of the ArrayDeque.
+
+### Python3 reverse list
+https://stackoverflow.com/questions/31633635/what-is-the-meaning-of-inta-1-in-python
+a[::-1]

@@ -166,3 +166,10 @@ lc 036
 public String(int[] codePoints,
       int offset,
       int count)
+
+### Convert char to int
+char c = '10';
+int val = '10' - '0';
+
+digit(char ch, int radix)
+Returns the numeric value of the character ch in the specified radix.
