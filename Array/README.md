@@ -49,3 +49,6 @@ direction要不断变化，第一个数字是控制的行号，第二个是列�
 ## Most Popular Methods to solve Array issues
 - HashMap
 - Two pointers
+
+## 2967  Minimum Cost to Make Array Equalindromic
+Don't be afraid to find answer by brute force checking the palindrome, go find next number and previous number

@@ -40,3 +40,18 @@ capacity大小问题：必须是常数，不能后来指定
 
 ### The delete of the heap during a simple implementation of heap is usually not supported.
 It could be sift up OR sift down!!!
+
+## Use computeIfAbsent().add() to simplify logic
+```java
+// Insert the '(-1 * rating, name)' element in the current cuisine's set.
+            cuisineFoodMap
+                .computeIfAbsent(cuisines[i], k -> new TreeSet<>((a, b) -> {
+                    int compareByRating = Integer.compare(a.getKey(), b.getKey());
+                    if (compareByRating == 0) {
+                        // If ratings are equal, compare by food name (in ascending order).
+                        return a.getValue().compareTo(b.getValue());
+                    }
+                    return compareByRating;
+                }))
+                .add(new Pair(-ratings[i], foods[i]));
+```
