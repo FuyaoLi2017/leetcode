@@ -50,6 +50,49 @@ class Solution {
     }
 }
 
+// editoral DFS with memorization
+class Solution {
+
+    Map<Integer, Integer> memo = new HashMap<>();
+
+    public int numDecodings(String s) {
+        return recursiveWithMemo(0, s);
+    }
+    
+    private int recursiveWithMemo(int index, String str) {
+        // Have we already seen this substring?
+        if (memo.containsKey(index)) {
+            return memo.get(index);
+        }
+        
+        // If you reach the end of the string
+        // Return 1 for success.
+        if (index == str.length()) {
+            return 1;
+        }
+
+        // If the string starts with a zero, it can't be decoded
+        if (str.charAt(index) == '0') {
+            return 0;
+        }
+
+        if (index == str.length() - 1) {
+            return 1;
+        }
+
+
+        int ans = recursiveWithMemo(index + 1, str);
+        if (Integer.parseInt(str.substring(index, index + 2)) <= 26) {
+             ans += recursiveWithMemo(index + 2, str);
+         }
+
+        // Save for memoization
+        memo.put(index, ans);
+
+        return ans;
+    }
+}
+
 /*USE char to access the dfs*/
 class Solution {
     public int numDecodings(String s) {
@@ -70,27 +113,59 @@ class Solution {
     }
 }
 
-// a direct DP solution
-public class Solution {
+// a direct DP solution - iterative DP editorial solution
+class Solution {
+
     public int numDecodings(String s) {
-        if(s == null || s.length() == 0) {
+        // DP array to store the subproblem results
+        int[] dp = new int[s.length() + 1];
+        dp[0] = 1;
+        
+        // Ways to decode a string of size 1 is 1. Unless the string is '0'.
+        // '0' doesn't have a single digit decode.
+        dp[1] = s.charAt(0) == '0' ? 0 : 1;
+
+        for(int i = 2; i < dp.length; i++) {
+            // Check if successful single digit decode is possible.
+            if (s.charAt(i - 1) != '0') {
+               dp[i] = dp[i - 1];  
+            }
+            
+            // Check if successful two digit decode is possible.
+            int twoDigit = Integer.valueOf(s.substring(i - 2, i));
+            if (twoDigit >= 10 && twoDigit <= 26) {
+                dp[i] += dp[i - 2];
+            }
+        }
+        
+        return dp[s.length()];
+    }
+}
+
+// optimize space for the solution above
+class Solution {
+    public int numDecodings(String s) {  
+        if (s.charAt(0) == '0') {
             return 0;
         }
+
         int n = s.length();
-        int[] dp = new int[n+1];
-        dp[0] = 1;
-        dp[1] = s.charAt(0) != '0' ? 1 : 0;
-        for(int i = 2; i <= n; i++) {
-            int first = Integer.valueOf(s.substring(i-1, i));
-            int second = Integer.valueOf(s.substring(i-2, i));
-            if(first >= 1 && first <= 9) {
-               dp[i] += dp[i-1];
+        int twoBack = 1;
+        int oneBack = 1;
+        for (int i = 1; i < n; i++) {
+            int current = 0;
+            if (s.charAt(i) != '0') {
+                current = oneBack;
             }
-            if(second >= 10 && second <= 26) {
-                dp[i] += dp[i-2];
+            int twoDigit = Integer.parseInt(s.substring(i - 1, i + 1));
+            if (twoDigit >= 10 && twoDigit <= 26) {
+                current += twoBack;
             }
+           
+            twoBack = oneBack;
+            oneBack = current;
         }
-        return dp[n];
+        return oneBack;
     }
 }
 
@@ -114,5 +189,45 @@ public class Solution {
             else memo[i] = (Integer.parseInt(s.substring(i,i+2))<=26) ? memo[i+1]+memo[i+2] : memo[i+1];
 
         return memo[0];
+    }
+}
+
+
+// my failed solution
+class Solution {
+    public int numDecodings(String s) {
+        if (s.charAt(0) == '0') return 0;
+        int[] dp = new int[s.length()+2];
+        // dp[1] = 1;
+        dp[2] = 1;
+
+        for (int i = 1; i < s.length(); i++) {
+            char c = s.charAt(i);
+            char prev = s.charAt(i - 1);
+
+            int curNum = c - '0';
+            int prevNum = prev - '0';
+            if (curNum == 0) {
+                if (prevNum < 1 || prevNum > 2) {
+                    return 0;
+                } else {
+                    if (i == 1) {
+                        dp[i+2] = 1;
+                    } else {
+                        dp[i+2] = dp[i];
+                    }
+                }
+            } else { // c is not '0'
+                if ((prevNum == 1) || (prevNum == 2 && curNum < 7)) {
+                    dp[i+2] = dp[i] + dp [i+1];
+                } else {
+                    dp[i+2] = dp[i+1];
+                }
+            }
+        }
+
+        System.out.print(dp.toString());
+
+        return dp[s.length() + 1];
     }
 }

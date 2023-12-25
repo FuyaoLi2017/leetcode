@@ -5,3 +5,6 @@ All questions are filed to different folders. For some interesting ideas, I have
 
 ### Design questions
 字符串多路的问题，一定要想到Trie
+
+## basic loops
+- in for loop, you can use logical operations to add multiple conditions (&&, || )
