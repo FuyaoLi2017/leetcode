@@ -35,3 +35,6 @@ leetcode 309: buy and sell stock with cooldown
 
 ### NP HARD problems
 698, dp can optimize, but still exponential time complexity
+
+## initialize DP array
+1155 - the deminsion of the problem decide the deminsion of the array, if you feel it should be a 2D problem, initialize a 2D array
