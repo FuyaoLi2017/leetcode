@@ -65,34 +65,44 @@ class Solution {
 }
 
 // BFS,最多吧indegree变成1的做法
-public boolean canFinish(int numCourses, int[][] prerequisites) {
-    int[][] matrix = new int[numCourses][numCourses]; // i -> j
-    int[] indegree = new int[numCourses];
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int[] indegree = new int[numCourses];
+        List<List<Integer>> adj = new ArrayList<>(numCourses);
 
-    for (int i=0; i<prerequisites.length; i++) {
-        int ready = prerequisites[i][0];
-        int pre = prerequisites[i][1];
-        if (matrix[pre][ready] == 0)
-            indegree[ready]++; //duplicate case
-        matrix[pre][ready] = 1;
-    }
+        for (int i = 0; i < numCourses; i++) {
+            adj.add(new ArrayList<>());
+        }
 
-    int count = 0;
-    Queue<Integer> queue = new LinkedList();
-    for (int i=0; i<indegree.length; i++) {
-        if (indegree[i] == 0) queue.offer(i);
-    }
-    while (!queue.isEmpty()) {
-        int course = queue.poll();
-        count++;
-        for (int i=0; i<numCourses; i++) {
-            if (matrix[course][i] != 0) {
-                if (--indegree[i] == 0)
-                    queue.offer(i);
+        for (int[] prerequisite : prerequisites) {
+            adj.get(prerequisite[1]).add(prerequisite[0]);
+            indegree[prerequisite[0]]++;
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        // Push all the nodes with indegree zero in the queue.
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                queue.offer(i);
             }
         }
+
+        int nodesVisited = 0;
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            nodesVisited++;
+
+            for (int neighbor : adj.get(node)) {
+                // Delete the edge "node -> neighbor".
+                indegree[neighbor]--;
+                if (indegree[neighbor] == 0) {
+                    queue.offer(neighbor);
+                }
+            }
+        }
+
+        return nodesVisited == numCourses;
     }
-    return count == numCourses;
 }
 
 // 用ArrayList做DFS,比用boolean可以少很多支路
