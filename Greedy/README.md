@@ -4,3 +4,6 @@ If you are doing greedy, don't try to traverse all possiblities, just cut to the
 # TreeMap hack
 - lowerKey(key)
 - ceilingKey(key)
+
+# Efficient code
+take corner cases in if condition first
