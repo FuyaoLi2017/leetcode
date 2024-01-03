@@ -1,3 +1,4 @@
+# Notes about Binary Search
 ### in order to avoid circle in the loop
 the jump out condition of binary search
 -> (low + 1 < high)
@@ -26,6 +27,9 @@ int rotate = low;
 - 可以选用更大的数据表示
 - 可以把乘法操作变为除法操作
 
+### Avoid overflow
+left + (right - left) / 2
+
 ### 不要总被二分的边界条件限制住。其实可以简单点
 像laicode 069, 其实选中的点是不是 <= mid + 1就足以判断！（其实就是==， 不会小于mid + 1）
 
@@ -38,3 +42,28 @@ binary search
 chocolate
 
 ### 744, char这类直接可以比较大小，进行二分搜索
+
+# Binary Search Leetcode explorer
+## Template 1 - classic binary search
+Initial Condition: left = 0, right = length-1
+Termination: left > right
+Searching Left: right = mid-1
+Searching Right: left = mid+1
+```java
+int binarySearch(int[] nums, int target){
+  if(nums == null || nums.length == 0)
+    return -1;
+
+  int left = 0, right = nums.length - 1;
+  while(left <= right){
+    // Prevent (left + right) overflow
+    int mid = left + (right - left) / 2;
+    if(nums[mid] == target){ return mid; }
+    else if(nums[mid] < target) { left = mid + 1; }
+    else { right = mid - 1; }
+  }
+
+  // End Condition: left > right
+  return -1;
+}
+```
