@@ -13,6 +13,17 @@ Each time we only do one of the two:
 (2) if tails[i-1] < x <= tails[i], update tails[i]
 Doing so will maintain the tails invariant. The the final answer is just the size.
 */
+
+
+/**
+ * Initialize an array dp with length nums.length and all elements equal to 1. dp[i] 
+ * represents the length of the longest increasing subsequence
+ *  that ends with the element at index i.
+Iterate from i = 1 to i = nums.length - 1. 
+At each iteration, use a second for loop to iterate from j = 0 to j = i - 1
+ (all the elements before i). For each element before i, 
+ check if that element is smaller than nums[i]. If so, set dp[i] = max(dp[i], dp[j] + 1).
+ */
 public int lengthOfLIS(int[] nums) {
     int[] tails = new int[nums.length];
     int size = 0;
@@ -32,7 +43,74 @@ public int lengthOfLIS(int[] nums) {
 }
 // Runtime: 2 ms
 
+
+// approach 2:  Intelligently Build a Subsequence - greedy
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        ArrayList<Integer> sub = new ArrayList<>();
+        sub.add(nums[0]);
+        
+        for (int i = 1; i < nums.length; i++) {
+            int num = nums[i];
+            if (num > sub.get(sub.size() - 1)) {
+                sub.add(num);
+            } else {
+                // Find the first element in sub that is greater than or equal to num
+                int j = 0;
+                while (num > sub.get(j)) {
+                    j += 1;
+                }
+                
+                sub.set(j, num);
+            }
+        }
+        
+        return sub.size();
+    }
+}
+
 //use binarySearch API
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        ArrayList<Integer> sub = new ArrayList<>();
+        sub.add(nums[0]);
+        
+        for (int i = 1; i < nums.length; i++) {
+            int num = nums[i];
+            if (num > sub.get(sub.size() - 1)) {
+                sub.add(num);
+            } else {
+                int j = binarySearch(sub, num);
+                sub.set(j, num);
+            }
+        }
+        
+        return sub.size();
+    }
+    
+    private int binarySearch(ArrayList<Integer> sub, int num) {
+        int left = 0;
+        int right = sub.size() - 1;
+        int mid = (left + right) / 2;
+        
+        while (left < right) {
+            mid = (left + right) / 2;
+            if (sub.get(mid) == num) {
+                return mid;
+            }
+            
+            if (sub.get(mid) < num) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        
+        return left;
+    }
+}
+
+
 public class Solution {
     public int lengthOfLIS(int[] nums) {
         int[] dp = new int[nums.length];

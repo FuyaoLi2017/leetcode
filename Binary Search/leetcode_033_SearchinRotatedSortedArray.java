@@ -25,6 +25,90 @@ Output: -1
 // and apply binary search to find whether the target is in the array
 // then we can get a O(log(n)) solution
 
+// solution 1: Find Pivot Index + Binary Search
+class Solution {
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        int left = 0, right = n - 1;
+        
+        // Find the index of the pivot element (the smallest element)
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] > nums[n - 1]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+    
+        // Binary search over elements on the pivot element's left
+        int answer = binarySearch(nums, 0, left - 1, target);
+        if (answer != -1) {
+            return answer;
+        }
+        
+        // Binary search over elements on the pivot element's right
+        return binarySearch(nums, left, n - 1, target);
+    }
+    
+    // Binary search over an inclusive range [left_boundary ~ right_boundary]
+    private int binarySearch(int[] nums, int leftBoundary, int rightBoundary, int target) {
+        int left = leftBoundary, right = rightBoundary;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+}
+
+// solution 2 Find Pivot Index + Binary Search with Shift
+class Solution {
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        int left = 0, right = n - 1;
+
+        // Find the index of the pivot element (the smallest element)
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] > nums[n - 1]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return shiftedBinarySearch(nums, left, target);
+    }
+    
+    // Shift elements in a circular manner, with the pivot element at index 0.
+    // Then perform a regular binary search
+    private int shiftedBinarySearch(int[] nums, int pivot, int target) {
+        int n = nums.length;
+        int shift = n - pivot;
+        int left = (pivot + shift) % n;
+        int right = (pivot - 1 + shift) % n;
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[(mid - shift + n) % n] == target) {
+                return (mid - shift + n) % n;
+            } else if (nums[(mid - shift + n) % n] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+}
+
 class Solution {
     public int search(int[] nums, int target) {
         int low = 0, high = nums.length - 1;
@@ -55,6 +139,7 @@ class Solution {
 // https://leetcode.windliang.cc/leetCode-33-Search-in-Rotated-Sorted-Array.html
 // 参考解法三
 // 一直更新有序的一段
+// sort 顺序是对的
 public int search(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;

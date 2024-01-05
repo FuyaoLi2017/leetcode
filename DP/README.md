@@ -38,3 +38,8 @@ leetcode 309: buy and sell stock with cooldown
 
 ## initialize DP array
 1155 - the deminsion of the problem decide the deminsion of the array, if you feel it should be a 2D problem, initialize a 2D array
+
+
+# What makes a DP problem
+- max/min of something
+- we have to make decisions that may depend on previously made decisions, which is very typical of a problem involving subsequences.
