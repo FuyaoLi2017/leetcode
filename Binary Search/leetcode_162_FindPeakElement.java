@@ -25,41 +25,69 @@ Note:
 Your solution should be in logarithmic complexity.
 */
 
-// recusive
-class Solution {
+// recusive - narrow down the search range
+public class Solution {
     public int findPeakElement(int[] nums) {
-        return helper(nums, 0, nums.length - 1);
+        return search(nums, 0, nums.length - 1);
     }
-
-    private int helper(int[] nums, int low, int high) {
-        if(low == high) {
-            return low;
-        } else {
-            int mid1 = low + (high - low) / 2;
-            int mid2 = mid1 + 1;
-            if (nums[mid1] > nums[mid2]) {
-                return helper(nums, low, mid1);
-            } else {
-                return helper(nums, mid2, high);
-            }
-        }
+    public int search(int[] nums, int l, int r) {
+        if (l == r)
+            return l;
+        int mid = (l + r) / 2;
+        if (nums[mid] > nums[mid + 1])
+            return search(nums, l, mid);
+        return search(nums, mid + 1, r);
     }
 }
 
-// interative
+// iterative - avoid overflow by starting condition
+public class Solution {
+    public int findPeakElement(int[] nums) {
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (nums[mid] > nums[mid + 1])
+                r = mid;
+            else
+                l = mid + 1;
+        }
+        return l;
+    }
+}
+
+// my solution 1/10/2024
 class Solution {
     public int findPeakElement(int[] nums) {
-        int low = 0;
-        int high = nums.length - 1;
-        while (low < high) {
-            int mid1 = low + (high - low) / 2;
-            int mid2 = mid1 + 1;
-            if (nums[mid1] > nums[mid2]) {
-                high = mid1;
-            } else {
-                low = mid2;
+        int left = 0;
+        int right = nums.length-1;
+        
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            int midNum = nums[mid];
+            
+            int leftIndex = mid - 1;
+            int rightIndex = mid + 1;
+            
+            boolean isPeak = true;
+            if ((leftIndex >= 0 && nums[leftIndex] > midNum) 
+                || (rightIndex < nums.length && nums[rightIndex] > midNum)){
+                isPeak = false;
+            }
+            
+            if (isPeak) return mid;
+            else {
+                if (rightIndex >= nums.length) { // corner case
+                    right = mid - 1;
+                }
+                if (nums[rightIndex] > midNum) { // focus on right side
+                    left = mid + 1;
+                }
+                else if (nums[rightIndex] < midNum) {
+                    right = mid;
+                }
             }
         }
-        return low;
+        
+        return right;
     }
 }
