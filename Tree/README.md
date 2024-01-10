@@ -127,3 +127,6 @@ push is pushing the data to the front of the ArrayDeque.
 ### Python3 reverse list
 https://stackoverflow.com/questions/31633635/what-is-the-meaning-of-inta-1-in-python
 a[::-1]
+
+### Level order BFS
+Leetcode 2385, use size of the queue and traverse them in a for loop
