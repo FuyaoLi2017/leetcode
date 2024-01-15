@@ -68,3 +68,7 @@ Sample use: this override will allow the map to grow up to 100 entries and then 
 
 ### use a array table to store values
 inverse table
+
+# Hashmap for each loop
+the variables must be effective final/final
+
