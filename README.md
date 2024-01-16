@@ -10,4 +10,3 @@ All questions are filed to different folders. For some interesting ideas, I have
 - in for loop, you can use logical operations to add multiple conditions (&&, || )
 
 
-## java Access modifier
