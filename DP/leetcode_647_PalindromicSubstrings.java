@@ -1,4 +1,12 @@
-// no DP solution
+/**
+ * Given a string s, return the number of palindromic substrings in it.
+
+A string is a palindrome when it reads the same backward as forward.
+
+A substring is a contiguous sequence of characters within the string.
+ */
+
+// no DP solution, expand from center also works well
 public class Solution {
     int count = 0;
 
@@ -75,5 +83,51 @@ public class Solution {
         }
         return totalPallindromes;
 
+    }
+}
+
+
+// my solution 02/10/2024
+class Solution {
+    public int countSubstrings(String s) {
+        int n = s.length();
+        boolean[][] isP = new boolean[n][n];
+
+        // i is end index, j is start index
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == j) {
+                    isP[i][j]  = true;
+                }
+                else if  (j > i) continue;
+                else {
+                    char start = s.charAt(j);
+                    char end = s.charAt(i);
+                    if (j + 1 == i) {
+                        if (start == end) {
+                            isP[i][j]  = true;
+                        } else {
+                            continue;
+                        }
+                        
+                    }
+                    if (start == end && isP[i-1][j+1]) {
+                        isP[i][j]  = true;
+                    }
+                }   
+            }
+        }
+
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j > i) continue;
+                else if (isP[i][j]) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
     }
 }
